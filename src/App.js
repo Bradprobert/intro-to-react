@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {AppBar, Toolbar, Typography, Button, IconButton} from "@material-ui/core"
+import { withStyles } from '@material-ui/core/styles';
+import MenuIcon from "@material-ui/icons/Menu"
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const styles = {
+    root: {
+        flexGrow: 1,
+    },
+    flex: {
+        flex: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
 }
 
-export default App;
+class App extends Component {
+    render() {
+        const { classes } = this.props;
+        return (
+            <div className="App">
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                            <MenuIcon/>
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            Title
+                        </Typography>
+                        <Button color="inherit">Login</Button>
+                    </Toolbar>
+                </AppBar>
+            </div>
+        );
+    }
+}
+
+export default withStyles(styles)(App);
